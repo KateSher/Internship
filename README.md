@@ -9,14 +9,21 @@
 3. Используя функцию train_test_split из состава Sklearn (from sklearn.model_selection import train_test_split) разделить входные и целевые данные на тренировочные и тестовые; на обучение отвести 80% данных (установкой параметра train_size = 0.8).
 
 4. Используя StandardScaler, преобразовать входные данные путем их шкалирования, например:
+
 scaler = StandardScaler()
+
 scaler.fit(X_train_unscaled)
+
 X_train= scaler.transform(X_train_unscaled)
+
 X_test = scaler.transform(X_test_unscaled)
+
 Целевые данные не шкалировать.
 
 5. Построить модель с такой же архитектурой, как в рассмотренном на занятии примере, но со следующими отличиями:
+
 – размерность входного слоя – 2 (input_shape=(2,)).
+
 – плотность выходного слоя – 2, а его активационная функция должна быть указана явно (activation='softmax');
 
 6. Откомпилировать модель с таким же как в рассмотренном примере оптимизатором (Adam), но с другой loss-функцией loss = 'sparse_categorical_crossentropy'. Кроме того, задать параметр metrics = ['acc']. Это необходимо для логирования Accuracy.
@@ -26,6 +33,7 @@ X_test = scaler.transform(X_test_unscaled)
 8. Продемонстрировать результаты обучения в виде кривых loss-функций (тренировочной и валидационной), а также acc (тренировочного и валидационного). В истории (history) данные об изменении acc и val_acc доступны по соответствующим ключам, то есть:
 
 plt.plot(history.history['acc'], label='train')
+
 plt.plot(history.history['val_acc'], label='val')
 
 
